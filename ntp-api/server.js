@@ -26,7 +26,9 @@ const authenticateToken = (req, res, next) => {
 app.get('/api/ntp-time', authenticateToken, (req, res) => {
   const timezone = req.query.timezone || 'UTC';
 
-  ntpClient.getNetworkTime("127.0.0.1", 123, function(err, date) {
+  const SERVER_NTP = process.env.SERVER_NTP;
+  
+  ntpClient.getNetworkTime(SERVER_NTP, 123, function(err, date) {
     if (err) {
       return res.status(500).json({ error: 'Failed to retrieve time from NTP server' });
     }
