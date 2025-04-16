@@ -1,7 +1,3 @@
-Here’s the **English version** of the updated documentation, including **Bearer Token support via `.env`** and secure access from an HTML/JavaScript client:
-
----
-
 # ✅ NTP Server with Docker and API Bridge (With Bearer Token Auth)
 
 This project demonstrates how to run an NTP server inside Docker and create a secure Express.js API bridge with Bearer Token authentication. It allows access to NTP time from a browser or JavaScript client, ensuring accurate and tamper-proof time synchronization that doesn't rely on the local system clock.
