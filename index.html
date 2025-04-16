@@ -7,13 +7,17 @@
 </head>
 <body>
     <h1>NTP Time</h1>
-    <p id="ntp-time">Loading...</p>
+    <p id="ntp-date">Date: Loading...</p>
+    <p id="ntp-time">Time: Loading...</p>
 
     <script>
         async function fetchNTPTime() {
-            const response = await fetch('http://127.0.0.1:123/api/ntp-time');
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get user's time zone
+            const response = await fetch(`http://localhost:3000/api/ntp-time?timezone=${userTimezone}`);
             const data = await response.json();
-            document.getElementById('ntp-time').innerText = `NTP Time: ${data.ntp_time}`;
+
+            document.getElementById('ntp-date').innerText = `Date: ${data.ntp_date}`;
+            document.getElementById('ntp-time').innerText = `Time: ${data.ntp_time}`;
         }
 
         fetchNTPTime();

@@ -1,0 +1,19 @@
+{
+  "name": "network-time-protocol",
+  "version": "1.0.0",
+  "description": "This project demonstrates how to run an NTP server inside Docker, create an API bridge using Express.js to fetch NTP time, and access the time from a browser or JavaScript client. The goal is to provide accurate time synchronization without relying on local system time, ensuring the time cannot be manipulated by local devices.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "moment-timezone": "^0.5.48",
+    "ntp-client": "^0.5.3",
+    "socket.io": "^4.8.1"
+  }
+}
