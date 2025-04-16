@@ -170,7 +170,7 @@ Open the `index.html` file in a browser. The page should display the NTP time re
 
 ## DNS Configuration
 
-Ensure that the domain `ntp.utb-univ.ac.id` points to the public IP of your server. You can do this by adding an A record in your DNS management system.
+Ensure that the domain `ntp.domain.com` points to the public IP of your server. You can do this by adding an A record in your DNS management system.
 
 ---
 

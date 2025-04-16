@@ -4,4 +4,8 @@ services:
     build: ./docker
     container_name: ntp-server
     restart: unless-stopped
-    network_mode: host
+    network_mode: bridge  # Default network mode
+    ports:
+      - "123:123/udp"  # Expose NTP service on UDP port 123
+    volumes:
+      - ./docker/ntp.conf:/etc/ntp.conf  # Mount custom NTP configuration

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTP Time Test</title>
+</head>
+<body>
+    <h1>NTP Time</h1>
+    <p id="ntp-time">Loading...</p>
+
+    <script>
+        async function fetchNTPTime() {
+            const response = await fetch('http://127.0.0.1:123/api/ntp-time');
+            const data = await response.json();
+            document.getElementById('ntp-time').innerText = `NTP Time: ${data.ntp_time}`;
+        }
+
+        fetchNTPTime();
+    </script>
+</body>
+</html>
