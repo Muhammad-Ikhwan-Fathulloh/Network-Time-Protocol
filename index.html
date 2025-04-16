@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NTP Time Test</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NTP Time Test</title>
 </head>
 <body>
-    <h1>NTP Time</h1>
-    <p id="ntp-date">Date: Loading...</p>
-    <p id="ntp-time">Time: Loading...</p>
+  <h1>NTP Time</h1>
+  <p id="ntp-date">Date: Loading...</p>
+  <p id="ntp-time">Time: Loading...</p>
 
-    <script>
-        async function fetchNTPTime() {
-            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get user's time zone
-            const response = await fetch(`http://localhost:3000/api/ntp-time?timezone=${userTimezone}`);
-            const data = await response.json();
+  <script>
+    async function fetchNTPTime() {
+      const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-            document.getElementById('ntp-date').innerText = `Date: ${data.ntp_date}`;
-            document.getElementById('ntp-time').innerText = `Time: ${data.ntp_time}`;
+      const response = await fetch(`http://localhost:3000/api/ntp-time?timezone=${userTimezone}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer your-secret-token', // Ganti dengan token dari .env server
+          'Content-Type': 'application/json'
         }
+      });
 
-        fetchNTPTime();
-    </script>
+      if (!response.ok) {
+        const err = await response.json();
+        document.getElementById('ntp-date').innerText = `Error: ${err.error}`;
+        document.getElementById('ntp-time').innerText = '';
+        return;
+      }
+
+      const data = await response.json();
+      document.getElementById('ntp-date').innerText = `Date: ${data.ntp_date}`;
+      document.getElementById('ntp-time').innerText = `Time: ${data.ntp_time}`;
+    }
+
+    fetchNTPTime();
+  </script>
 </body>
 </html>
