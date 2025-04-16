@@ -1,8 +1,3 @@
-Tentu! Berikut adalah versi **README.md** yang telah diperbarui agar sesuai dengan **kode terbaru** yang memisahkan `date` dan `time`, menggunakan `moment-timezone`, dan mendukung parameter `timezone`.
-
----
-
-```md
 # NTP Server with Docker and API Bridge
 
 This project demonstrates how to run an NTP server inside Docker, create an API bridge using Express.js to fetch NTP time, and access the time from a browser or JavaScript client. The goal is to provide accurate time synchronization without relying on local system time, ensuring the time cannot be manipulated by local devices.
