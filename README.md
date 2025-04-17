@@ -46,6 +46,7 @@ npm install express ntp-client moment-timezone cors dotenv
 ### b. Create `.env` File
 ```env
 API_TOKEN=your-secret-token
+SERVER_NTP=127.0.0.1
 ```
 
 > Replace `your-secret-token` with your actual API token.
