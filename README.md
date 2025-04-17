@@ -1,5 +1,7 @@
 # ✅ NTP Server with Docker and API Bridge (With Bearer Token Auth)
 
+![Arsitektur Network Time Protocol (NTP)](ntp.png)
+
 This project demonstrates how to run an NTP server inside Docker and create a secure Express.js API bridge with Bearer Token authentication. It allows access to NTP time from a browser or JavaScript client, ensuring accurate and tamper-proof time synchronization that doesn't rely on the local system clock.
 
 ---
