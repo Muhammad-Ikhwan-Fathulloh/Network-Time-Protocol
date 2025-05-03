@@ -9,3 +9,5 @@ services:
       - "123:123/udp"  # Expose NTP service on UDP port 123
     volumes:
       - ./docker/ntp.conf:/etc/ntp.conf  # Mount custom NTP configuration
+    cap_add:
+      - SYS_TIME

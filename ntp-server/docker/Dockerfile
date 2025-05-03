@@ -1,9 +1,16 @@
 FROM debian:stable-slim
 
-RUN apt-get update && apt-get install -y ntp && rm -rf /var/lib/apt/lists/*
+# Install NTP
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ntp && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copy the custom NTP configuration file into the container
+# Salin file konfigurasi ntp.conf ke dalam container
 COPY ntp.conf /etc/ntp.conf
 
-# Start the NTP daemon
-CMD ["ntpd", "-n"]
+# Expose port NTP (UDP 123)
+EXPOSE 123/udp
+
+# Jalankan ntpd tanpa daemon mode (-n), dan non-root clock set (-g)
+# Opsi -g memungkinkan sinkronisasi meski offset besar
+CMD ["ntpd", "-n", "-g"]
